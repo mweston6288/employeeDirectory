@@ -12,7 +12,6 @@ class SearchBar extends Component{
     };
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state.search);
     }
     render(){
         return (
@@ -20,12 +19,12 @@ class SearchBar extends Component{
                 <Form.Group controlId="searchform">
                     <Form.Label>
                         Search By Name
-                </Form.Label>
+                    </Form.Label>
                     <Form.Control type="text" placeholder="Search" onChange={this.handleInputChange}/>
                 </Form.Group>
                 <Button variant="primary" type="Submit">
                     Submit
-            </Button>
+                </Button>
             </Form>
         )
     }
