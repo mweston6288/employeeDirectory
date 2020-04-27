@@ -13,6 +13,19 @@ function EmployeeTable(props) {
                     <th>DOB</th>
                 </tr>
             </thead>
+            <tbody>
+
+            {props.employees.map(employee=>(
+                    <tr>
+                        <td>{employee.name}</td>
+                        <td>{employee.email}</td>
+                    <td>{employee.role}</td>
+                    <td>{employee.DOB}</td>
+
+                    </tr>
+            ))}
+            </tbody>
+
         </Table>
     )
 
