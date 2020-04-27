@@ -19,9 +19,6 @@ class AddButton extends Component{
         api.getAllEmployees().then(res=>{
             this.setState({...this.state, response:res.data})
         })
-        api.getEmployeesBySort("name").then(res=>{
-            console.log(res)
-        })
     }
     renderForm=()=>{
         this.setState({usingForm:true})
@@ -31,7 +28,6 @@ class AddButton extends Component{
 
     handleNameChange = event=>{
         this.setState({...this.state,name:event.target.value})
-        console.log(this.state)
     };
     handleEmailChange = event => {
         this.setState({ ...this.state, email: event.target.value })
@@ -41,7 +37,6 @@ class AddButton extends Component{
     };
     handleDOBChange = event=>{
         this.setState({ ...this.state, DOB: new Date(event.target.value)})
-        console.log(this.state)
     }
     handleFormSubmit = async event=>{
         event.preventDefault()
@@ -62,6 +57,12 @@ class AddButton extends Component{
         const addBtn = document.getElementById("add-btn");
         addBtn.removeAttribute("hidden");
     }
+    handleSort=event=>{
+        console.log(event.target.id)
+        api.getEmployeesBySort(event.target.id).then(res=>{
+            this.setState({...this.state, response:res.data})
+        })
+    }
     render(){
         return(
             <Container>
@@ -76,7 +77,10 @@ class AddButton extends Component{
                     handleDOBChange={this.handleDOBChange}
                     handleFormSubmit={this.handleFormSubmit}
                 />
-                <EmployeeTable employees={this.state.response} />
+                <EmployeeTable 
+                    employees={this.state.response} 
+                    handleSort={this.handleSort}
+                />
 
             </Container>
         )

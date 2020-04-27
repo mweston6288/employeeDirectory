@@ -7,10 +7,10 @@ function EmployeeTable(props) {
         <Table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>email</th>
-                    <th>Role</th>
-                    <th>DOB</th>
+                    <th id="name" onClick={props.handleSort}>Name</th>
+                    <th id="email" onClick={props.handleSort}>email</th>
+                    <th id="role" onClick={props.handleSort}>Role</th>
+                    <th id="DOB" onClick={props.handleSort}>DOB</th>
                 </tr>
             </thead>
             <tbody>
