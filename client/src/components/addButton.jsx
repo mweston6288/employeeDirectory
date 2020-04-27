@@ -19,6 +19,9 @@ class AddButton extends Component{
         api.getAllEmployees().then(res=>{
             this.setState({...this.state, response:res.data})
         })
+        api.getEmployeesBySort("name").then(res=>{
+            console.log(res)
+        })
     }
     renderForm=()=>{
         this.setState({usingForm:true})
