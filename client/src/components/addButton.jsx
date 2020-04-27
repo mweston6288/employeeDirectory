@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from "react-bootstrap/Button"
 import Container from "react-bootstrap/Container"
 import AddForm from "./addForm"
+import api from "../api"
 
 class AddButton extends Component{
     state={
@@ -27,11 +28,13 @@ class AddButton extends Component{
         this.setState({ ...this.state, role: event.target.value })
     };
     handleDOBChange = event=>{
-        this.setState({ ...this.state, DOB: event.target.value })
+        this.setState({ ...this.state, DOB: new Date(event.target.value)})
         console.log(this.state)
     }
-    handleFormSubmit = event=>{
+    handleFormSubmit = async event=>{
         event.preventDefault()
+        console.log(event);
+        api.addEmployee(this.state)
         this.setState({
             usingForm: false,
             name: "",

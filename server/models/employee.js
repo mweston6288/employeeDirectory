@@ -15,7 +15,7 @@ const employeeSchema = new Schema({
         trim: true,
         required: "Enter an email"
     },
-    dob: {
+    DOB: {
         type: Date,
     },
     role: {
@@ -23,6 +23,6 @@ const employeeSchema = new Schema({
     }
 });
 
-const employee = mongoose.model("Employee", employeeSchema);
+const Employee = mongoose.model("Employee", employeeSchema);
 
-module.exports = employee;
+module.exports = Employee;
