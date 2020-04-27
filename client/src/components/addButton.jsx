@@ -3,15 +3,23 @@ import Button from "react-bootstrap/Button"
 import Container from "react-bootstrap/Container"
 import AddForm from "./addForm"
 import api from "../api"
+import EmployeeTable from "./EmployeeTable"
 
 class AddButton extends Component{
     state={
         usingForm: false,
+        updated: false,
         name:"",
         role:"",
         DOB:"",
-        email:""
+        email:"",
+        response:[]
     };
+    componentDidMount(){
+        api.getAllEmployees().then(res=>{
+            this.setState({...this.state, response:res.data})
+        })
+    }
     renderForm=()=>{
         this.setState({usingForm:true})
         const addBtn = document.getElementById("add-btn");
@@ -20,6 +28,7 @@ class AddButton extends Component{
 
     handleNameChange = event=>{
         this.setState({...this.state,name:event.target.value})
+        console.log(this.state)
     };
     handleEmailChange = event => {
         this.setState({ ...this.state, email: event.target.value })
@@ -33,14 +42,20 @@ class AddButton extends Component{
     }
     handleFormSubmit = async event=>{
         event.preventDefault()
-        console.log(event);
-        api.addEmployee(this.state)
-        this.setState({
-            usingForm: false,
-            name: "",
-            role: "",
-            DOB: "",
-            email: ""})
+        api.addEmployee(this.state).then(()=>{
+            api.getAllEmployees().then(res=>{
+                this.setState({
+                    usingForm: false,
+                    name: "",
+                    role: "",
+                    DOB: "",
+                    email: "",
+                    response: res.data
+                });
+            })
+        })
+
+
         const addBtn = document.getElementById("add-btn");
         addBtn.removeAttribute("hidden");
     }
@@ -58,6 +73,8 @@ class AddButton extends Component{
                     handleDOBChange={this.handleDOBChange}
                     handleFormSubmit={this.handleFormSubmit}
                 />
+                <EmployeeTable employees={this.state.response} />
+
             </Container>
         )
     }
