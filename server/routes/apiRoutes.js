@@ -13,8 +13,13 @@ Router.get("/api/employee",(req,res)=>{
 })
 Router.get("/api/employee/:id",(req,res)=>{
     console.log(req.params)
-    id = req.params.id
     Employee.find({}).sort({[req.params.id]: 1}).then(response=>{
+        res.json(response);
+    })
+})
+Router.get("/api/employee/name/:id", (req, res) => {
+    console.log(req.params)
+    Employee.find({name: req.params.id}).then(response => {
         res.json(response);
     })
 })

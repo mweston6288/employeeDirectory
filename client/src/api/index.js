@@ -7,11 +7,14 @@ const api = axios.create({
 export const addEmployee = ({ name, DOB, role, email }) => api.post("./api/employee", {name,DOB,role,email});
 export const getAllEmployees = ()=>api.get("./api/employee");
 export const getEmployeesBySort = (id) => api.get("./api/employee/"+id)
+export const getEmployeesByName = (id) => api.get("./api/employee/name/" + id)
+
 
 const apis = {
     addEmployee,
     getAllEmployees,
-    getEmployeesBySort
+    getEmployeesBySort,
+    getEmployeesByName
 }
 
 export default apis;

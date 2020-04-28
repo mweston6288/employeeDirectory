@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button"
+import api from "../api"
 
 class SearchBar extends Component{
     state={
-        search:""
+        search:"",
+        result:[]
     };
 
     handleInputChange = event => {
@@ -12,6 +14,15 @@ class SearchBar extends Component{
     };
     handleFormSubmit = event => {
         event.preventDefault();
+        if (this.state.search){
+        api.getEmployeesByName(this.state.search).then(res=>{
+            console.log(res);
+        })}
+        else{
+            api.getAllEmployees().then(res=>{
+                console.log(res);
+            })
+        }
     }
     render(){
         return (
