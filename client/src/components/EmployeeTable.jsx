@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Table from "react-bootstrap/Table"
-import apis from '../api';
 
 function EmployeeTable(props) {
     return(

@@ -40,6 +40,9 @@ class AddButton extends Component{
     }
     handleFormSubmit = async event=>{
         event.preventDefault()
+        if (!this.state.name || !this.state.role || !this.state.DOB || !this.state.email){
+            return;
+        }
         api.addEmployee(this.state).then(()=>{
             api.getAllEmployees().then(res=>{
                 this.setState({
