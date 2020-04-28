@@ -6,19 +6,28 @@ import api from "../api"
 import EmployeeTable from "./EmployeeTable"
 
 class AddButton extends Component{
-    state={
-        usingForm: false,
-        updated: false,
-        name:"",
-        role:"",
-        DOB:"",
-        email:"",
-        response:[]
-    };
-    componentDidMount(){
-        api.getAllEmployees().then(res=>{
-            this.setState({...this.state, response:res.data})
+    constructor(props){
+        console.log(props)
+        super(props);
+        this.state = {
+            usingForm: false,
+            name: "",
+            role: "",
+            DOB: "",
+            email: "",
+            result: props.result
+        };
+    }
+    componentDidMount() {
+        api.getAllEmployees().then(res => {
+            console.log(res)
+            this.setState({ ...this.state, result: res.data })
         })
+    }
+    componentDidUpdate(prevProps){
+        if (this.props.result !== prevProps.result){
+        this.setState({...this.state, result: this.props.result})
+        }
     }
     renderForm=()=>{
         this.setState({usingForm:true})
@@ -81,7 +90,7 @@ class AddButton extends Component{
                     handleFormSubmit={this.handleFormSubmit}
                 />
                 <EmployeeTable 
-                    employees={this.state.response} 
+                    employees={this.state.result} 
                     handleSort={this.handleSort}
                 />
 

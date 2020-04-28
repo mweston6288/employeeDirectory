@@ -8,7 +8,6 @@ function App() {
   return (
     <Container fluid>
       <SearchBar/>
-      <AddButton/>
     </Container>
   );
 }
