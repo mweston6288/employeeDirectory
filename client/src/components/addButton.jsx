@@ -50,6 +50,7 @@ class AddButton extends Component{
     handleFormSubmit = async event=>{
         event.preventDefault()
         if (!this.state.name || !this.state.role || !this.state.DOB || !this.state.email){
+            this.setState({...this.state, usingForm: false})
             return;
         }
         api.addEmployee(this.state).then(()=>{
@@ -72,7 +73,8 @@ class AddButton extends Component{
     handleSort=event=>{
         console.log(event.target.id)
         api.getEmployeesBySort(event.target.id).then(res=>{
-            this.setState({...this.state, response:res.data})
+            this.setState({...this.state, result:res.data})
+            console.log(this.state)
         })
     }
     render(){
