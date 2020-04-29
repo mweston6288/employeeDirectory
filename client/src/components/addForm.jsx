@@ -2,6 +2,7 @@ import React from 'react';
 import Button from "react-bootstrap/Button"
 import Form from "react-bootstrap/Form"
 
+// Creates the add employee form. If props.inUse is false, it creates an empty form
 function AddForm(props){
     return(
         <Form onSubmit={props.handleFormSubmit}>

@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button"
 import api from "../api"
 import AddButton from "./addButton"
-
+//The search bar element. The filter element in the state determines what elements appear in the employee table
 class SearchBar extends Component{
     state={
         search:"",

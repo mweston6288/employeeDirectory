@@ -20,7 +20,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/employee", {
     useFindAndModify: false
 });
 
-// routes here
 app.use(require("./routes/apiRoutes.js"))
 
 app.listen(PORT, () => {

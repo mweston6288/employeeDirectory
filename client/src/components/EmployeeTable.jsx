@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from "react-bootstrap/Table"
 
+// Creates a table of the employee fields
 function EmployeeTable(props) {
     return(
         <Table>

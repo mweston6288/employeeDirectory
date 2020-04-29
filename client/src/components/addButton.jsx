@@ -71,7 +71,7 @@ class AddButton extends Component{
             addBtn.removeAttribute("hidden");
             return;
         }
-        // Reset the state
+        // Reset the state and set the result array to all employees
         api.addEmployee(this.state).then(()=>{
             api.getAllEmployees().then(res => {
        
