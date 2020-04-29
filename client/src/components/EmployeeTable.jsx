@@ -16,7 +16,7 @@ function EmployeeTable(props) {
             <tbody>
 
             {props.employees.map(employee=>(
-                    <tr>
+                    <tr key={employee._id}>
                         <td>{employee.name}</td>
                         <td>{employee.email}</td>
                     <td>{employee.role}</td>
