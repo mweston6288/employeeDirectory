@@ -7,30 +7,17 @@ import AddButton from "./addButton"
 class SearchBar extends Component{
     state={
         search:"",
-        result:[]
+        filter:"",
     };
     handleInputChange = event => {
         this.setState({ search: event.target.value })
     };
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.search !== ""){
-        api.getEmployeesByName(this.state.search).then(res=>{
-            console.log(res);
-            this.setState({...this.state, result:res.data})
-        })}
-        else{
-            api.getAllEmployees().then(res=>{
-                console.log(res);
-                this.setState({ ...this.state, result: res.data })
-
-            })
-        }
-        this.setState({...this.state, search:""});
+        this.setState({...this.state, filter: this.state.search, search:""});
         document.getElementsByClassName("searchBar")[0].value="";
     }
     render(){
-        console.log(this.state)
         return (
             <div>
             <Form onSubmit={this.handleFormSubmit}>
@@ -44,7 +31,7 @@ class SearchBar extends Component{
                     Submit
                 </Button>
             </Form>
-            <AddButton result={this.state.result}/>
+            <AddButton filter={this.state.filter}/>
             </div>
         )
     }
