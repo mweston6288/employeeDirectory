@@ -73,12 +73,16 @@ class AddButton extends Component{
         }
         // Reset the state
         api.addEmployee(this.state).then(()=>{
-                this.setState({...this.state,
+            api.getAllEmployees().then(res => {
+       
+            this.setState({...this.state,
                     usingForm: false,
                     name: "",
                     role: "",
                     DOB: "",
                     email: "",
+                    result: res.data
+            });
             });
         })
 
