@@ -3,7 +3,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 const cors = require("cors")
-const PORT = process.env.PORT||3000;
+const PORT = 3000;
 
 const app = express();
 
@@ -21,9 +21,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/employee", {
 });
 
 app.use(require("./routes/apiRoutes.js"))
-if (process.env.NODE_ENV === 'production'){
-    app.use(express.static('../client/build'))
-}
+
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 });
