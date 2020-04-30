@@ -1,22 +1,22 @@
 # Employee Directory
 Purpose: Creates a table of employees that can be sorted based on the table fields. The table can be filtered by name for easier use.
 
+The deployed app can be found here: https://afternoon-everglades-46457.herokuapp.com/
 # To use:
-You'll need to install dependencies in both the client and server side. In both employeeDirectory/client and employeeDirectory/server, you'll need to run the following command:
+You'll need to install dependencies in both the main client folder. In employeeDirectory, run the following commands:
 
 npm install
+npm run install-client
 
-To deploy locally, you'll need to run the client and server side separately. In your terminal, enter employeeDirectory/client and run the command
+Next, you'll need to create the client build using the following command:
+
+npm run build
+
+After that, you can deploy locally using 
 
 npm start
 
-This should open your default borwser to localhost:8000
-
-Then change directory to employeeDirectory/server and run the following command
-
-node server.js
-
-By default, the client side runs on port 8000 and the server side runs on port 3000.
+The default port is localhost:8080
 
 # Using the app
 When the app loads, it will performa get from an employee database and fill out a table using the information.
