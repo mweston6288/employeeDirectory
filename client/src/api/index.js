@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: process.env.MONGODB_URI || 'http://localhost:3000',
+    baseURL: process.env.MONGODB_URI || 'http://localhost:8080',
 })
 // Call on the api routes in server/routes/apiRoutes
 export const addEmployee = ({ name, DOB, role, email }) => api.post("./api/employee", {name,DOB,role,email});
