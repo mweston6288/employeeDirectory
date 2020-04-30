@@ -92,10 +92,8 @@ class AddButton extends Component{
     }
     // Manage when you sort the employees
     handleSort=event=>{
-        console.log(event.target)
         // Pass the sorting method to the API then display the results.
         api.getEmployeesBySort(event.target.id).then(res=>{
-            console.log(res);
             this.setState({...this.state, result:res.data})
         })
     }
