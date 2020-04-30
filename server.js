@@ -13,7 +13,6 @@ app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors())
-app.use(express.static("/client/public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/employee", {
     useNewUrlParser: true,
@@ -25,6 +24,9 @@ app.use(require("./server/routes/apiRoutes.js"))
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
+}
+else{
+    app.use(express.static("/client/public"));
 }
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);

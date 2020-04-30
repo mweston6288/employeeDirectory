@@ -12,7 +12,7 @@ Router.get("/api/employee",(req,res)=>{
      })
 })
 Router.get("/api/employee/:id",(req,res)=>{
-    Employee.find({name:""}).sort({[req.params.id]: 1}).then(response=>{
+    Employee.find().sort({[req.params.id]: 1}).then(response=>{
         res.json(response);
     })
 })
